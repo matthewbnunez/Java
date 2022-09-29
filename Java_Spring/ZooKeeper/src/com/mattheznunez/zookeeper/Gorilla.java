@@ -2,8 +2,8 @@ package com.mattheznunez.zookeeper;
 
 public class Gorilla extends Mammal{
 	public Gorilla() {
-		super(100);
-	}
+		super(200);
+	}                                        
 	public void throwSomething() {
 		System.out.println("The Gorilla throw something!");
 		this.setEnergy(this.getEnergy() - 5);
