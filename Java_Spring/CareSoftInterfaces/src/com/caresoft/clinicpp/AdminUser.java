@@ -3,6 +3,7 @@ package com.caresoft.clinicpp;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class AdminUser extends User implements HIPAACompliantUser, HIPAACompliantAdmin{
     
     // Inside class:
@@ -12,15 +13,10 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     
     
     // TO DO: Implement a constructor that takes an ID and a role
-    public AdminUser(Integer employeeID, String role) {
-    	super(employeeID);
-    	this.employeeID = employeeID;
+    public AdminUser(Integer id, String role) {
+    	super(id);
     	this.role = role;
-    }
-    public AdminUser(Integer employeeID, String role, Integer id, int pin) {
-    	super(id, pin);
-    	this.employeeID = employeeID;
-    	this.role = role;
+    	this.securityIncidents = new ArrayList<>();
     }
     
     
@@ -32,13 +28,14 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     	}
     	return false;
     }
+    
     public boolean accessAuthorized(Integer confirmedAuthID) {
     	// TODO Auto-generated method stub
-    	if(confirmedAuthID != employeeID) {
-//    		authIncident();
-    		return false;
-    	} else {
+    	if(confirmedAuthID == id) {
     		return true;
+    	} else {
+    		authIncident();
+    		return false;
     	}
     }
     
