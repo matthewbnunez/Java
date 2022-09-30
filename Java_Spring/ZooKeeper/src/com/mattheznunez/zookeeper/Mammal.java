@@ -3,6 +3,7 @@ package com.mattheznunez.zookeeper;
 public class Mammal {
 	private int energy = 100;
 	
+	public Mammal () {}
 	public Mammal(int energy) {
 		this.energy = energy;
 	}
