@@ -53,7 +53,7 @@ class ListNode {
         if (runner.next.next == null) {
           return runner.data;
         }
-          // moves the the next node
+          // moves to the next node
         runner = runner.next;
       }
     }
