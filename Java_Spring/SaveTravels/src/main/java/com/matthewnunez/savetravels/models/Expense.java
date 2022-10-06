@@ -27,12 +27,11 @@ public class Expense {
     @Size(min = 1, max = 200)
     private String vendor;
     @NotNull
-    @Min(1)
+    @Min(value = 0)
     private Double amount;
     @NotNull
-    @Min(1)
+    @Size(min = 1, max = 200)
     private String description;
-    // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
