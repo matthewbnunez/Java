@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="/">Home</a>
 <h1>Expense</h1>
 <form:form action="/edit/${expense.id}" method="post" modelAttribute="expense">
 	<input type="hidden" name="_method" value="put">
