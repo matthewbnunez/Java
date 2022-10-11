@@ -20,7 +20,41 @@
 <body>
 	<div>
 		<h1>Welcome, ${userName}</h1>
+		<p><a href="/books/new">+ Add to my shelf!</a></p>
 		<p><a href="/logout">Logout</a></p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th> ID </th>
+					<th> Title </th>
+					<th> Author </th>
+					<th> Posted By </th>
+					<th colspan=2> Actions </th> 
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="eachBook" items="${bookList}">
+					<tr>
+						<td>${eachBook.id} </td>
+						<td> 
+						<a href="/books/${eachBook.id}">
+						<c:out value="${eachBook.title}"/></a>
+						</td>
+						<td> ${eachBook.author}</td>
+						<td> <c:out value="${eachBook.user.userName}" /></td>
+						<td>
+						<a href="/books/edit/${eachBook.id}" >Edit</a>
+						</td>
+						<td>
+						<form action="/books/delete/${eachBook.id}" method="POST">
+							<input type="hidden" name="_method" value="delete" />
+							<button type="submit">Delete</button>
+						</form>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table> 
 	</div>
 </body>
 </html>

@@ -61,12 +61,4 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-	@GetMapping("/books")
-	public String dashboard(HttpSession session) {
-		if(session.getAttribute("userId")==null) {
-			return "redirect:/logout";
-		}
-		return "dashboard.jsp";
-	}
 }
