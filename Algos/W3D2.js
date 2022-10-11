@@ -47,7 +47,25 @@
      * @returns {?number} The min number or null if empty.
      */
     extract() {
-      
+      let temp = this.heap[this.heap.length - 1];
+      this.heap[this.heap.length - 1] = this.heap[1];
+      this.heap[1] = temp;
+      this.heap.pop();
+      let pointer = 1
+      while (this.heap[pointer] > this.heap[pointer*2] || this.heap[pointer] > this.heap[pointer*2 + 1]) {
+        if (this.heap[pointer] > this.heap[pointer*2] && this.heap[pointer*2] < this.heap[pointer*2+1]) {
+          temp = this.heap[pointer]
+          this.heap[pointer] = this.heap[pointer*2]
+          this.heap[pointer*2] = temp
+          pointer = pointer*2
+        }
+        if (this.heap[pointer] > this.heap[pointer*2+1] && this.heap[pointer*2+1] < this.heap[pointer*2]) {
+          temp = this.heap[pointer]
+          this.heap[pointer] = this.heap[pointer*2+1]
+          this.heap[pointer*2+1] = temp
+          pointer = pointer*2+1
+        }
+      }
     }
   
     /**
@@ -80,11 +98,13 @@
   heap.insert(22)
   heap.insert(28)
   heap.insert(5)
-  // console.log(heap.heap)
+  console.log(heap.heap)
   //[null, 5,15, 10,20, 22, 28, 17]
+  
+  
   heap.printHorizontalTree()
   heap.extract()
-  // console.log(heap.heap)
+  console.log(heap.heap)
   //[null, 10, 15, 17, 20, 22,28]
   
   heap.printHorizontalTree()
